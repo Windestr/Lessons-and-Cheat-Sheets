@@ -130,3 +130,6 @@ That seems like enough info on writing more advanced queries. You can add as man
 
 Now can get into more advanced PowerShell usage.
 ### "Advanced" PowerShell Usage with XPath Queries
+When I say "advanced", it's not so much advanced as it is just utilizing more PowerShell cmdlets alongside the XPath queries.
+We'll start with a list of useful cmdlets that enhance our log analysis abilities:
+- `PLACEHOLDER`
