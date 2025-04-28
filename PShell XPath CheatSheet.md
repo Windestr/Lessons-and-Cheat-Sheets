@@ -36,7 +36,7 @@ Below is a simplified version of what you'd see in an event log if you go to the
 </Event>
 ```
 Now, for writing the XPath query, you need to order it the same way you would navigate directories in the CLI.\
-To get to  EventID, we have to go through Event, to Systems, to EventID.\
+To get to  EventID, we have to go through Event, to Systems, to EventID.
 ```pgsql
 Event
  ├── System
@@ -106,14 +106,15 @@ Well first, we already know how to filter based on EventID, so lets just change 
 Next, we can use the parameters `and` and `or` to further hone in our search: `"*[System/EventID=4798] and *[????????????]"`.
 - Take note of the double quotes. We put double quotes around the entire query, not each part of the query.
  - Using the `and` parameter means the filter will show every log that has an EventID of 4798 ***and*** a username of SRVR-DSKTP01.
- - Using the `or` parameter means the filter will show every log that has either an EventID of 4798 ***or*** a username of SRVR-DSKTP01.
+ - Using the `or` parameter means the filter will show every log that has ***either*** an EventID of 4798 ***or*** a username of SRVR-DSKTP01.
 
 So now, how would we write the syntax for filtering logs with the username SRVR-DSKTP01?\
 Looking at the example XML. We can see SRVR-DSKTP01 under `<Data Name="SubjectUserName">SRVR-DSKTP01$</Data>` within `<EventData>`.\
 Using what we know of the syntax so far, we can create the beginning of the XPath query `"*[EventData/Data]"`. However, theres multiple parameters under `/Data`, so how do we specify the username?\
 We use the syntax `/Data[@Name='']`.
 
-If we add that in, the command becomes `"*[EventData/Data[@Name='']]"`. Now, we can see that SRVR-DSKTP01 is the value for `<Data Name="SubjectUserName">`. Using this, the syntax becomes `"*[EventData/Data[@Name='SubjectUserName']]"`
+If we add that in, the query becomes `"*[EventData/Data[@Name='']]"`.\
+Now, we can see that SRVR-DSKTP01 is the value for `<Data Name="SubjectUserName">`. Using this, the syntax becomes `"*[EventData/Data[@Name='SubjectUserName']]"`
 
 Ok, we're almost there.
 All we have to do now is specify what username were looking for with `='SRVR-DSKTP01'`.\
