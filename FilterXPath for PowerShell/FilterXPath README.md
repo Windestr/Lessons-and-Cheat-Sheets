@@ -1,5 +1,5 @@
 # PowerShell XPath Filters for Log Analysis
-This is a cheat sheet for writing XPath queries using the -FilterXPath flag in PowerShell.
+This is a lesson for writing XPath queries using the -FilterXPath flag in PowerShell.
 
 Syntax is going to be a big part of this, with many examples and probably quite exhaustive explanations.
 
