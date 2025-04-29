@@ -130,6 +130,43 @@ That seems like enough info on writing more advanced queries. You can add as man
 
 Now can get into more advanced PowerShell usage.
 ### "Advanced" PowerShell Usage with XPath Queries
-When I say "advanced", it's not so much advanced as it is just utilizing more PowerShell cmdlets alongside the XPath queries.
-We'll start with a list of useful cmdlets that enhance our log analysis abilities:
-- `PLACEHOLDER`
+When I say "advanced", it's not so much advanced as it is just utilizing more PowerShell cmdlets alongside the XPath queries.\
+We'll start with a list of useful cmdlets that enhance our log analysis abilities.
+
+#### Sorting and Grouping:
+`Sort-Object` — Sorts objects by their properties.\
+`Group-Object` — Groups objects that have the same value for specified properties.\
+`Measure-Object` — Calculates numeric properties like count, sum, average, etc.
+
+#### Filtering and Selecting
+`Select-Object` — Selects specific properties or a set number of objects.\
+`Where-Object` — Filters objects based on a condition.\
+`Unique-Object` (alias Select-Unique) — Filters out duplicate objects (less commonly needed because Sort-Object -Unique is often better).
+
+#### Formatting (for output organization)
+`Format-Table` — Displays output as a table.\
+`Format-List` — Displays output as a list.\
+`Format-Wide` — Displays only one property of an object across the screen.
+
+### Other Helpful Cmdlets
+`Out-GridView` — Pops up a sortable, filterable GUI window for objects.\
+`Compare-Object` — Compares two sets of objects and shows differences.\
+`Tee-Object` — Sends output to both the console and a file/variable
+
+As you can see, there are a lot of cmdlets we can use to parse data in PowerShell.\
+Now I assume if you're here reading this, you know how to pipe commands in PowerShell. But, we'll go over it briefly anyways.
+
+You "pipe" the output of a command into the input of another command with the `|` parameter.\
+```PowerShell
+Get-WinEvent -LogName Microsoft-Windows/Application -FilterXPath "*[System/EventID=7040]" | Measure-Object -List
+```
+The output of the command above would sort for logs with an EventID of 7040, and then output the number of how many logs were found into a list format.\
+Being able to use these effedtively really depends on your skills with PowerShell
+
+If you want to know more about how to use the cmdlets I listed out, check out the [official Microsoft doumentation](https://learn.microsoft.com/en-us/powershell/scripting/how-to-use-docs?view=powershell-7.5) on them.
+
+### Good for now
+OK, I think that wraps up about what you would need to effectively create XPath queries in PowerShell for analyzing logs. If you want to put everything into practice, you can always try it on the logs on your own computer.
+Otherwise, If you pay for TryHackMe premium, they have the Sysmon and Windows Event Logs rooms where you can put what you learned to the test.
+
+## Good Luck, Have Fun!
